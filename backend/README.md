@@ -2,7 +2,7 @@
 title: Pusaka Batik API
 emoji: 🌺
 colorFrom: green
-colorTo: orange
+colorTo: yellow
 sdk: docker
 pinned: false
 ---
