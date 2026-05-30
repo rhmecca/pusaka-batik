@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pusaka Batik | Dashboard</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              sage: "#3E4E3A",
+              ivory: "#F9F6F0",
+              terracotta: "#B37D53",
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', "serif"],
+              sans: ['"Inter"', "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-ivory text-sage font-sans antialiased min-h-screen flex flex-col"
+  >
+    <nav
+      class="flex justify-between items-center px-12 py-6 border-b border-sage/10 bg-ivory"
+    >
+      <div
+        class="flex items-center gap-2 cursor-pointer"
+        onclick="window.location.href = 'index.html'"
+      >
+        <div
+          class="w-8 h-8 rounded-full border-4 border-sage flex items-center justify-center"
+        >
+          <div class="w-3 h-3 bg-terracotta rotate-45"></div>
+        </div>
+        <span class="font-serif font-bold text-2xl tracking-wide"
+          >Pusaka Batik</span
+        >
+      </div>
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-terracotta transition"
+          >Discover</a
+        >
+        <a href="dashboard.html" class="text-terracotta">Identification</a>
+        <a href="index.html#gallery" class="hover:text-terracotta transition"
+          >Gallery</a
+        >
+        <a href="archive.html" class="hover:text-terracotta transition"
+          >Archives</a
+        >
+      </div>
+      <button
+        onclick="openFeedbackModal()"
+        class="bg-sage text-ivory px-6 py-2 rounded-full text-sm font-medium hover:bg-sage/90 transition shadow-md"
+      >
+        Feedback
+      </button>
+    </nav>
+
+    <main class="flex-grow flex flex-col items-center py-12 px-6 w-full">
+      <h1 class="font-serif text-3xl font-bold mb-3">Identify Batik Motif</h1>
+      <p class="text-sage/70 text-center max-w-lg mb-10 text-sm">
+        Upload or capture an image of a Batik cloth to discover its heritage,
+        region of origin, and the symbolic meaning woven into its pattern.
+      </p>
+
+      <div
+        class="bg-white w-full max-w-3xl rounded-[2rem] shadow-sm p-10 border border-sage/10 text-center relative overflow-hidden"
+      >
+        <input type="file" id="fileInput" class="hidden" accept="image/*" />
+
+        <div
+          id="dropZone"
+          class="border-2 border-dashed border-sage/30 rounded-2xl py-12 px-6 hover:bg-sage/5 transition duration-300"
+        >
+          <img
+            id="preview"
+            src=""
+            class="hidden mx-auto rounded-xl max-h-[300px] mb-6 shadow-md object-cover"
+            alt="Preview"
+          />
+
+          <div id="uploadContent">
+            <div class="text-4xl mb-4 text-sage/40">
+              <svg
+                class="w-12 h-12 mx-auto"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z"
+                />
+              </svg>
+            </div>
+            <p class="font-serif text-xl font-bold mb-2">Input Image Source</p>
+            <p class="text-sm text-sage/60 mb-8">
+              Drop your image, browse file, or take a picture
+            </p>
+
+            <div
+              class="flex flex-col sm:flex-row justify-center items-center gap-4"
+            >
+              <label
+                for="fileInput"
+                class="cursor-pointer bg-ivory border border-sage/20 text-sage px-8 py-3 rounded-full text-sm font-bold hover:bg-sage/10 transition"
+              >
+                Browse File
+              </label>
+              <button
+                id="startCameraBtn"
+                class="bg-sage text-ivory px-8 py-3 rounded-full text-sm font-bold hover:bg-sage/90 transition shadow-md flex items-center gap-2"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"
+                  ></path>
+                </svg>
+                Open Camera
+              </button>
+            </div>
+          </div>
+
+          <div id="cameraArea" class="hidden flex flex-col items-center mt-2">
+            <div
+              class="relative w-full max-w-sm rounded-2xl overflow-hidden shadow-lg border-2 border-terracotta mb-6 bg-black"
+            >
+              <video
+                id="cameraFeed"
+                autoplay
+                playsinline
+                class="w-full h-[300px] object-cover"
+              ></video>
+              <div
+                class="absolute inset-0 border border-white/20 m-4 pointer-events-none"
+              ></div>
+              <div
+                class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-white/40 pointer-events-none"
+              ></div>
+            </div>
+
+            <div class="flex gap-4">
+              <button
+                id="captureBtn"
+                class="bg-terracotta text-white px-8 py-3 rounded-full text-sm font-bold shadow-lg hover:-translate-y-1 transition duration-300"
+              >
+                Snap Photo
+              </button>
+              <button
+                id="closeCameraBtn"
+                class="bg-sage/10 text-sage px-6 py-3 rounded-full text-sm font-bold hover:bg-sage/20 transition duration-300"
+              >
+                Cancel
+              </button>
+            </div>
+            <canvas id="cameraCanvas" class="hidden"></canvas>
+          </div>
+        </div>
+
+        <p class="text-xs text-sage/50 mt-4">
+          Supports JPG, PNG, WEBP, or Live Camera up to 10MB
+        </p>
+
+        <div
+          id="loading"
+          class="hidden mt-6 text-terracotta font-medium animate-pulse"
+        >
+          Analyzing textile patterns...
+        </div>
+
+        <div
+          id="resultBox"
+          class="hidden mt-8 bg-ivory p-6 rounded-2xl text-left border border-sage/10 transition-all"
+        >
+          <div
+            class="flex flex-col md:flex-row md:items-start justify-between gap-4"
+          >
+            <div>
+              <p
+                class="text-xs font-bold text-terracotta uppercase tracking-wider mb-1"
+              >
+                Analysis Result
+              </p>
+              <h3
+                id="motifName"
+                class="font-serif text-3xl font-bold text-sage"
+              >
+                Parang Rusak
+              </h3>
+              <p class="text-sm text-sage/70 mt-1">
+                Confidence Level:
+                <span id="confidence" class="font-bold text-sage">98.5%</span>
+              </p>
+            </div>
+            <button
+              onclick="resetApp()"
+              class="bg-white border border-sage/20 text-sage px-5 py-2 rounded-full text-xs font-bold hover:bg-sage hover:text-ivory transition"
+            >
+              Try Another Image
+            </button>
+          </div>
+
+          <div id="descArea" class="mt-6 pt-5 border-t border-sage/10 hidden">
+            <p
+              class="text-xs font-bold text-sage/50 uppercase tracking-wider mb-2"
+            >
+              Historical Narrative
+            </p>
+            <p
+              id="motifDesc"
+              class="text-sm text-sage/80 leading-relaxed italic border-l-4 border-terracotta pl-4"
+            ></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-16 w-full max-w-3xl">
+        <h3 class="font-serif text-lg font-bold mb-6 text-center">
+          Popular Motifs
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div
+            onclick="window.location.href = 'index.html#gallery'"
+            class="group relative h-36 rounded-2xl shadow-sm overflow-hidden cursor-pointer border border-sage/10"
+          >
+            <img
+              src="assets/parang.jpg"
+              alt="Batik Parang"
+              class="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-sage/90 to-transparent opacity-90 flex items-end p-5"
+            >
+              <span class="text-ivory font-serif font-bold tracking-wide"
+                >Batik Parang</span
+              >
+            </div>
+          </div>
+          <div
+            onclick="window.location.href = 'index.html#gallery'"
+            class="group relative h-36 rounded-2xl shadow-sm overflow-hidden cursor-pointer border border-sage/10"
+          >
+            <img
+              src="assets/megamendung.png"
+              alt="Batik Megamendung"
+              class="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-terracotta/90 to-transparent opacity-90 flex items-end p-5"
+            >
+              <span class="text-ivory font-serif font-bold tracking-wide"
+                >Megamendung</span
+              >
+            </div>
+          </div>
+          <div
+            onclick="window.location.href = 'index.html#gallery'"
+            class="group relative h-36 rounded-2xl shadow-sm overflow-hidden cursor-pointer border border-sage/10"
+          >
+            <img
+              src="assets/kawung.jpg"
+              alt="Batik Kawung"
+              class="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-sage/90 to-transparent opacity-90 flex items-end p-5"
+            >
+              <span class="text-ivory font-serif font-bold tracking-wide"
+                >Batik Kawung</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      class="w-full border-t border-sage/10 py-8 px-12 text-center text-xs text-sage/60 mt-auto bg-ivory"
+    >
+      &copy; 2026 Pusaka Batik. Preserving the art of wax-resist dyeing.
+    </footer>
+
+    <div
+      id="feedbackModal"
+      class="fixed inset-0 z-[60] hidden flex items-center justify-center"
+    >
+      <div
+        class="absolute inset-0 bg-sage/40 backdrop-blur-sm transition-opacity"
+        onclick="closeFeedbackModal()"
+      ></div>
+      <div
+        class="relative bg-ivory w-11/12 max-w-md rounded-[2rem] shadow-2xl p-8 text-center transform transition-all scale-95 opacity-0 duration-300"
+        id="feedbackContent"
+      >
+        <button
+          onclick="closeFeedbackModal()"
+          class="absolute top-4 right-4 text-sage/50 hover:text-terracotta transition"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+        <div
+          class="w-16 h-16 bg-sage/10 text-terracotta rounded-full flex items-center justify-center mx-auto mb-4"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+            ></path>
+          </svg>
+        </div>
+        <h3 class="font-serif text-2xl font-bold text-sage mb-2">
+          We Value Your Feedback
+        </h3>
+        <p class="text-sm text-sage/70 leading-relaxed mb-8">
+          Help us improve the Pusaka Batik system! Your insights are highly
+          valuable for refining our AI and user interface.
+        </p>
+        <a
+          href="LINK_GOOGLE_FORM_KAMU_DISINI"
+          target="_blank"
+          rel="noopener noreferrer"
+          onclick="closeFeedbackModal()"
+          class="inline-block bg-terracotta text-white w-full py-3 rounded-full font-bold tracking-wide hover:-translate-y-1 hover:shadow-lg transition duration-300"
+        >
+          Open Google Form
+        </a>
+      </div>
+    </div>
+
+    <script>
+      const motifDatabase = {
+        "Batik Bali":
+          "A signature motif from the Island of the Gods, blending natural elements like hibiscus flowers, herons, and mythological creatures with vibrant, expressive colors.",
+        "Batik Betawi":
+          "Showcasing Jakarta's cultural icons such as ondel-ondel and the National Monument, featuring dynamic and lively colors typical of coastal communities.",
+        "Batik Cendrawasih":
+          "Originating from Papua, this motif highlights the beauty of the Bird of Paradise, symbolizing elegance, courage, and the natural wealth of eastern Indonesia.",
+        "Batik Dayak":
+          "A motif from Kalimantan rich in spiritual elements, featuring asymmetrical geometric patterns, the hornbill bird, and the tree of life (batang garing).",
+        "Batik Geblek Renteng":
+          "A contemporary motif from Kulon Progo inspired by the traditional 'geblek' snack, symbolizing strong bonds of brotherhood and mutual cooperation.",
+        "Batik Ikat Celup":
+          "Also known as the tie-dye (jumputan) technique, producing organic abstract patterns and unique color gradients that symbolize limitless freedom of expression.",
+        "Batik Insang":
+          "A traditional motif from Pontianak inspired by fish gills. It symbolizes the breath of life, dynamic movement, and the local wisdom of riverine communities.",
+        "Batik Kawung":
+          "One of the oldest motifs in the archipelago. Shaped like four intersecting ovals resembling palm fruit slices, it symbolizes purity, holiness, and longevity.",
+        "Batik Lasem":
+          "A coastal batik resulting from the acculturation of Javanese and Chinese cultures. Famous for its blood-red color and motifs of the mythical phoenix or dragon.",
+        "Batik Megamendung":
+          "A signature cloud motif from Cirebon with bold curved lines. Its philosophy symbolizes rain-bearing clouds as a profound source of life and tranquility.",
+        "Batik Pala":
+          "The pride of the Maluku people, featuring nutmeg spices to recount the history of the archipelago's glorious and highly sought-after spice route in the past.",
+        "Batik Parang":
+          "A continuous diagonal pattern resembling the letter S. It symbolizes ocean waves that never stop moving, representing an unyielding spirit and perseverance.",
+        "Batik Poleng":
+          "The sacred black-and-white checkered motif typical of Bali. It represents the concept of Rwa Bhineda, the harmonious balance of two opposing forces in life.",
+        "Batik Sekar Jagad":
+          "Meaning 'Flower of the World'. It combines various small motifs into a unified, beautiful map of islands, symbolizing diversity and the world's immense charm.",
+        "Batik Tambal":
+          "A motif consisting of a patchwork of various patterns. It is traditionally believed to possess a magical philosophy to 'patch up' shortcomings in human life's journey.",
+      };
+
+      const fileInput = document.getElementById("fileInput");
+      const preview = document.getElementById("preview");
+      const uploadContent = document.getElementById("uploadContent");
+      const loading = document.getElementById("loading");
+      const resultBox = document.getElementById("resultBox");
+      const descArea = document.getElementById("descArea");
+      const motifDesc = document.getElementById("motifDesc");
+
+      // Elemen Kamera
+      const startCameraBtn = document.getElementById("startCameraBtn");
+      const cameraArea = document.getElementById("cameraArea");
+      const cameraFeed = document.getElementById("cameraFeed");
+      const captureBtn = document.getElementById("captureBtn");
+      const closeCameraBtn = document.getElementById("closeCameraBtn");
+      const cameraCanvas = document.getElementById("cameraCanvas");
+      let stream = null;
+
+      // 1. Logika Unggah File Biasa
+      fileInput.addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          preview.src = e.target.result;
+          preview.classList.remove("hidden");
+          uploadContent.classList.add("hidden");
+        };
+        reader.readAsDataURL(file);
+        sendToAPI(file);
+      });
+
+      // 2. Logika Buka Kamera
+      startCameraBtn.addEventListener("click", async () => {
+        uploadContent.classList.add("hidden");
+        cameraArea.classList.remove("hidden");
+        try {
+          // Mencoba menggunakan kamera belakang jika di HP, atau kamera webcam standar
+          stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: "environment" },
+          });
+          cameraFeed.srcObject = stream;
+        } catch (err) {
+          alert("Akses kamera ditolak atau perangkat kamera tidak ditemukan.");
+          closeCamera();
+        }
+      });
+
+      // 3. Logika Mematikan Kamera
+      function closeCamera() {
+        if (stream) {
+          stream.getTracks().forEach((track) => track.stop()); // Matikan lampu webcam
+        }
+        cameraArea.classList.add("hidden");
+        uploadContent.classList.remove("hidden");
+      }
+      closeCameraBtn.addEventListener("click", closeCamera);
+
+      // 4. Logika Memotret (Snap)
+      captureBtn.addEventListener("click", () => {
+        cameraCanvas.width = cameraFeed.videoWidth;
+        cameraCanvas.height = cameraFeed.videoHeight;
+        const ctx = cameraCanvas.getContext("2d");
+        // Gambar frame video saat ini ke dalam kanvas tersembunyi
+        ctx.drawImage(
+          cameraFeed,
+          0,
+          0,
+          cameraCanvas.width,
+          cameraCanvas.height,
+        );
+
+        // Konversi kanvas menjadi format File JPG
+        cameraCanvas.toBlob(
+          (blob) => {
+            const file = new File([blob], "camera_capture.jpg", {
+              type: "image/jpeg",
+            });
+
+            // Matikan kamera, tampilkan hasil jepretan ke area preview
+            closeCamera();
+            preview.src = URL.createObjectURL(file);
+            preview.classList.remove("hidden");
+            uploadContent.classList.add("hidden");
+
+            // Kirim hasil jepretan ke AI
+            sendToAPI(file);
+          },
+          "image/jpeg",
+          0.95,
+        );
+      });
+
+      // Fungsi Universal untuk Mengirim Gambar ke Backend AI
+      async function sendToAPI(imageFile) {
+        resultBox.classList.add("hidden");
+        descArea.classList.add("hidden");
+        loading.classList.remove("hidden");
+
+        const formData = new FormData();
+        formData.append("file", imageFile);
+
+        try {
+          const response = await fetch("/predict", {
+            method: "POST",
+            body: formData,
+          });
+          const data = await response.json();
+
+          loading.classList.add("hidden");
+          resultBox.classList.remove("hidden");
+
+          if (response.ok) {
+            document.getElementById("motifName").textContent = data.motif;
+            document.getElementById("confidence").textContent =
+              data.confidence + "%";
+
+            if (motifDatabase[data.motif]) {
+              motifDesc.textContent = `"${motifDatabase[data.motif]}"`;
+              descArea.classList.remove("hidden");
+            }
+          } else {
+            document.getElementById("motifName").textContent =
+              "Analysis Failed";
+            document.getElementById("confidence").textContent = data.message;
+          }
+        } catch (err) {
+          loading.classList.add("hidden");
+          alert(
+            "Error terhubung ke server. Pastikan FastAPI Backend sedang berjalan.",
+          );
+        }
+      }
+
+      // Fungsi untuk Mereset Dashboard
+      function resetApp() {
+        preview.src = "";
+        preview.classList.add("hidden");
+        resultBox.classList.add("hidden");
+        uploadContent.classList.remove("hidden");
+        fileInput.value = ""; // Bersihkan file input
+      }
+
+      // Logika Modal Feedback
+      const fbModal = document.getElementById("feedbackModal");
+      const fbContent = document.getElementById("feedbackContent");
+      function openFeedbackModal() {
+        fbModal.classList.remove("hidden");
+        setTimeout(() => {
+          fbContent.classList.remove("scale-95", "opacity-0");
+          fbContent.classList.add("scale-100", "opacity-100");
+        }, 10);
+      }
+      function closeFeedbackModal() {
+        fbContent.classList.remove("scale-100", "opacity-100");
+        fbContent.classList.add("scale-95", "opacity-0");
+        setTimeout(() => {
+          fbModal.classList.add("hidden");
+        }, 300);
+      }
+    </script>
+  </body>
+</html>

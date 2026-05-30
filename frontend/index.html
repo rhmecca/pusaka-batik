@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pusaka Batik | Heritage Identification</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              sage: "#3E4E3A",
+              ivory: "#F9F6F0",
+              terracotta: "#B37D53",
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', "serif"],
+              sans: ['"Inter"', "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-ivory text-sage font-sans antialiased">
+    <nav
+      class="flex justify-between items-center px-12 py-6 border-b border-sage/10 bg-ivory"
+    >
+      <div
+        class="flex items-center gap-2 cursor-pointer"
+        onclick="window.location.href = 'index.html'"
+      >
+        <div
+          class="w-8 h-8 rounded-full border-4 border-sage flex items-center justify-center"
+        >
+          <div class="w-3 h-3 bg-terracotta rotate-45"></div>
+        </div>
+        <span class="font-serif font-bold text-2xl tracking-wide"
+          >Pusaka Batik</span
+        >
+      </div>
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="#" class="text-terracotta">Discover</a>
+        <a href="dashboard.html" class="hover:text-terracotta transition"
+          >Identification</a
+        >
+        <a href="#gallery" class="hover:text-terracotta transition">Gallery</a>
+        <a href="archive.html" class="hover:text-terracotta transition"
+          >Archives</a
+        >
+      </div>
+
+      <button
+        onclick="openFeedbackModal()"
+        class="bg-sage text-ivory px-6 py-2 rounded-full text-sm font-medium hover:bg-sage/90 transition shadow-md"
+      >
+        Feedback
+      </button>
+    </nav>
+
+    <main
+      class="px-12 py-16 md:py-24 max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center"
+    >
+      <div>
+        <h1
+          class="font-serif text-5xl md:text-6xl font-bold leading-tight mb-6"
+        >
+          Preserving the Art of Heritage
+        </h1>
+        <p class="text-sage/80 mb-10 text-lg leading-relaxed max-w-md">
+          Discover the profound narratives woven into every thread. Our advanced
+          identification system bridges traditional craftsmanship with modern
+          technology, allowing you to trace the origins and meaning of your
+          precious Batik pieces.
+        </p>
+        <div class="flex gap-4">
+          <a
+            href="dashboard.html"
+            class="bg-terracotta text-white px-8 py-4 rounded-full font-medium shadow-lg hover:-translate-y-1 transition duration-300"
+            >Start Identification</a
+          >
+          <a
+            href="#gallery"
+            class="border-2 border-sage text-sage px-8 py-4 rounded-full font-medium hover:bg-sage hover:text-ivory transition duration-300"
+            >Explore Gallery</a
+          >
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="w-full h-[500px] rounded-[2rem] shadow-2xl overflow-hidden">
+          <img
+            src="assets\landpage.jpg"
+            class="w-full h-full object-cover"
+            alt="Premium Indonesian Batik"
+          />
+        </div>
+      </div>
+    </main>
+
+    <section class="bg-white/40 py-20 px-12 border-t border-b border-sage/5">
+      <div class="text-center max-w-xl mx-auto mb-16">
+        <p
+          class="text-xs font-bold tracking-widest text-terracotta uppercase mb-3"
+        >
+          Capabilities
+        </p>
+        <h2 class="font-serif text-4xl font-bold">Advanced Textile Analysis</h2>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div
+          class="bg-ivory/80 backdrop-blur p-8 rounded-3xl border border-sage/5 text-left"
+        >
+          <div
+            class="w-12 h-12 mb-6 bg-sage/10 text-sage rounded-full flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-sage"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
+          </div>
+          <h3 class="font-serif font-bold text-xl mb-3">Image Upload</h3>
+          <p class="text-sm text-sage/70 leading-relaxed">
+            Easily capture or upload high-resolution images of your textile for
+            precise analysis.
+          </p>
+        </div>
+        <div
+          class="bg-ivory/80 backdrop-blur p-8 rounded-3xl border border-sage/5 text-left"
+        >
+          <div
+            class="w-12 h-12 mb-6 bg-sage/10 text-sage rounded-full flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-sage"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+              />
+            </svg>
+          </div>
+          <h3 class="font-serif font-bold text-xl mb-3">Deep Learning</h3>
+          <p class="text-sm text-sage/70 leading-relaxed">
+            Our AI models analyze the finest wax-resist details to classify
+            origin and motif.
+          </p>
+        </div>
+        <div
+          class="bg-ivory/80 backdrop-blur p-8 rounded-3xl border border-sage/5 text-left"
+        >
+          <div
+            class="w-12 h-12 mb-6 bg-sage/10 text-sage rounded-full flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-sage"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              />
+            </svg>
+          </div>
+          <h3 class="font-serif font-bold text-xl mb-3">Batik Encyclopedia</h3>
+          <p class="text-sm text-sage/70 leading-relaxed">
+            Access an expansive, curated database of historical patterns and
+            regional styles.
+          </p>
+        </div>
+        <div
+          class="bg-ivory/80 backdrop-blur p-8 rounded-3xl border border-sage/5 text-left"
+        >
+          <div
+            class="w-12 h-12 mb-6 bg-sage/10 text-sage rounded-full flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-sage"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              />
+            </svg>
+          </div>
+          <h3 class="font-serif font-bold text-xl mb-3">Fast Inference</h3>
+          <p class="text-sm text-sage/70 leading-relaxed">
+            Experience near-instantaneous identification results directly to
+            your device.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="gallery" class="py-24 px-12 max-w-7xl mx-auto">
+      <div class="text-center max-w-xl mx-auto mb-16">
+        <p
+          class="text-xs font-bold tracking-widest text-terracotta uppercase mb-3"
+        >
+          Collection Archive
+        </p>
+        <h2 class="font-serif text-4xl font-bold">Supported Batik Motifs</h2>
+        <p class="text-sm text-sage/70 mt-2">
+          Explore the 15 traditional Indonesian Batik motifs supported by our
+          deep learning inference engine. Click on any motif to uncover its
+          historical narrative.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+        <script>
+          const motifs = [
+            {
+              name: "Batik Bali",
+              img: "bali.jpg",
+              desc: "A signature motif from the Island of the Gods, blending natural elements like hibiscus flowers, herons, and mythological creatures with vibrant, expressive colors.",
+            },
+            {
+              name: "Batik Betawi",
+              img: "betawi.jpg",
+              desc: "Showcasing Jakarta's cultural icons such as ondel-ondel and the National Monument, featuring dynamic and lively colors typical of coastal communities.",
+            },
+            {
+              name: "Batik Cendrawasih",
+              img: "cendrawasih.jpg",
+              desc: "Originating from Papua, this motif highlights the beauty of the Bird of Paradise, symbolizing elegance, courage, and the natural wealth of eastern Indonesia.",
+            },
+            {
+              name: "Batik Dayak",
+              img: "dayak.jpg",
+              desc: "A motif from Kalimantan rich in spiritual elements, featuring asymmetrical geometric patterns, the hornbill bird, and the tree of life (batang garing).",
+            },
+            {
+              name: "Batik Geblek Renteng",
+              img: "geblek.jpg",
+              desc: "A contemporary motif from Kulon Progo inspired by the traditional 'geblek' snack, symbolizing strong bonds of brotherhood and mutual cooperation.",
+            },
+            {
+              name: "Batik Ikat Celup",
+              img: "ikat.jpg",
+              desc: "Also known as the tie-dye (jumputan) technique, producing organic abstract patterns and unique color gradients that symbolize limitless freedom of expression.",
+            },
+            {
+              name: "Batik Insang",
+              img: "insang.jpg",
+              desc: "A traditional motif from Pontianak inspired by fish gills. It symbolizes the breath of life, dynamic movement, and the local wisdom of riverine communities.",
+            },
+            {
+              name: "Batik Kawung",
+              img: "kawung.jpg",
+              desc: "One of the oldest motifs in the archipelago. Shaped like four intersecting ovals resembling palm fruit slices, it symbolizes purity, holiness, and longevity.",
+            },
+            {
+              name: "Batik Lasem",
+              img: "lasem.jpg",
+              desc: "A coastal batik resulting from the acculturation of Javanese and Chinese cultures. Famous for its blood-red color and motifs of the mythical phoenix or dragon.",
+            },
+            {
+              name: "Batik Megamendung",
+              img: "megamendung.png",
+              desc: "A signature cloud motif from Cirebon with bold curved lines. Its philosophy symbolizes rain-bearing clouds as a profound source of life and tranquility.",
+            },
+            {
+              name: "Batik Pala",
+              img: "pala.jpg",
+              desc: "The pride of the Maluku people, featuring nutmeg spices to recount the history of the archipelago's glorious and highly sought-after spice route in the past.",
+            },
+            {
+              name: "Batik Parang",
+              img: "parang.jpg",
+              desc: "A continuous diagonal pattern resembling the letter S. It symbolizes ocean waves that never stop moving, representing an unyielding spirit and perseverance.",
+            },
+            {
+              name: "Batik Poleng",
+              img: "poleng.jpg",
+              desc: "The sacred black-and-white checkered motif typical of Bali. It represents the concept of Rwa Bhineda, the harmonious balance of two opposing forces in life.",
+            },
+            {
+              name: "Batik Sekar Jagad",
+              img: "jagad.jpg",
+              desc: "Meaning 'Flower of the World'. It combines various small motifs into a unified, beautiful map of islands, symbolizing diversity and the world's immense charm.",
+            },
+            {
+              name: "Batik Tambal",
+              img: "tambal.jpg",
+              desc: "A motif consisting of a patchwork of various patterns. It is traditionally believed to possess a magical philosophy to 'patch up' shortcomings in human life's journey.",
+            },
+          ];
+
+          // Proses merender komponen kartu ke dalam Grid
+          motifs.forEach((motif, index) => {
+            document.write(`
+                        <div onclick="openModal('${motif.name}', 'assets/${motif.img}', '${motif.desc.replace(/'/g, "\\'")}')" class="group cursor-pointer bg-white rounded-3xl p-4 shadow-sm hover:shadow-xl border border-sage/5 transition duration-300 flex flex-col justify-between">
+                            <div class="w-full aspect-square bg-sage/5 rounded-2xl mb-4 overflow-hidden relative">
+                                <img src="assets/${motif.img}" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="${motif.name}">
+                                <div class="absolute inset-0 bg-sage opacity-0 group-hover:opacity-20 transition duration-300"></div>
+                            </div>
+                            <div>
+                                <span class="text-[10px] uppercase font-bold tracking-wider text-terracotta opacity-80">Motif ${String(index + 1).padStart(2, "0")}</span>
+                                <h4 class="font-serif font-bold text-md text-sage mt-0.5 group-hover:text-terracotta transition">${motif.name}</h4>
+                            </div>
+                        </div>
+                    `);
+          });
+        </script>
+      </div>
+    </section>
+
+    <footer
+      class="border-t border-sage/10 py-8 px-12 text-center text-xs text-sage/60 bg-white/20"
+    >
+      &copy; 2026 Pusaka Batik. Preserving the art of wax-resist dyeing.
+    </footer>
+
+    <div
+      id="motifModal"
+      class="fixed inset-0 z-50 hidden flex items-center justify-center"
+    >
+      <div
+        class="absolute inset-0 bg-sage/40 backdrop-blur-sm transition-opacity"
+        onclick="closeModal()"
+      ></div>
+
+      <div
+        class="relative bg-ivory w-11/12 max-w-2xl rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row transform transition-all scale-95 opacity-0 duration-300"
+        id="modalContent"
+      >
+        <button
+          onclick="closeModal()"
+          class="absolute top-4 right-4 z-10 w-8 h-8 bg-white/50 hover:bg-white rounded-full flex items-center justify-center text-sage transition"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+
+        <div class="md:w-1/2 h-64 md:h-auto relative">
+          <img
+            id="modalImg"
+            src=""
+            class="w-full h-full object-cover"
+            alt="Motif Detail"
+          />
+        </div>
+
+        <div class="md:w-1/2 p-8 md:p-10 flex flex-col justify-center">
+          <p
+            class="text-xs font-bold tracking-widest text-terracotta uppercase mb-2"
+          >
+            Batik Nusantara
+          </p>
+          <h3
+            id="modalTitle"
+            class="font-serif text-3xl font-bold text-sage mb-4"
+          >
+            Nama Motif
+          </h3>
+          <p id="modalDesc" class="text-sm text-sage/80 leading-relaxed">
+            Deskripsi motif akan muncul di sini...
+          </p>
+          <button
+            onclick="window.location.href = 'dashboard.html'"
+            class="mt-8 bg-sage text-ivory px-6 py-3 rounded-full text-sm font-medium hover:bg-sage/90 transition text-center w-full md:w-auto"
+          >
+            Identify this motif
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="feedbackModal"
+      class="fixed inset-0 z-[60] hidden flex items-center justify-center"
+    >
+      <div
+        class="absolute inset-0 bg-sage/40 backdrop-blur-sm transition-opacity"
+        onclick="closeFeedbackModal()"
+      ></div>
+
+      <div
+        class="relative bg-ivory w-11/12 max-w-md rounded-[2rem] shadow-2xl p-8 text-center transform transition-all scale-95 opacity-0 duration-300"
+        id="feedbackContent"
+      >
+        <button
+          onclick="closeFeedbackModal()"
+          class="absolute top-4 right-4 text-sage/50 hover:text-terracotta transition"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+
+        <div
+          class="w-16 h-16 bg-sage/10 text-terracotta rounded-full flex items-center justify-center mx-auto mb-4"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+            ></path>
+          </svg>
+        </div>
+
+        <h3 class="font-serif text-2xl font-bold text-sage mb-2">
+          We Value Your Feedback
+        </h3>
+        <p class="text-sm text-sage/70 leading-relaxed mb-8">
+          Help us improve the Pusaka Batik system! Your insights are highly
+          valuable for refining our AI and user interface.
+        </p>
+
+        <a
+          href="https://forms.gle/tRKeZCyf6gWrgAk2A"
+          target="_blank"
+          rel="noopener noreferrer"
+          onclick="closeFeedbackModal()"
+          class="inline-block bg-terracotta text-white w-full py-3 rounded-full font-bold tracking-wide hover:-translate-y-1 hover:shadow-lg transition duration-300"
+        >
+          Open Google Form
+        </a>
+      </div>
+    </div>
+
+    <script>
+      // Logika Modal Motif Batik
+      const modal = document.getElementById("motifModal");
+      const modalContent = document.getElementById("modalContent");
+
+      function openModal(name, imgSrc, desc) {
+        document.getElementById("modalTitle").innerText = name;
+        document.getElementById("modalImg").src = imgSrc;
+        document.getElementById("modalDesc").innerText = desc;
+
+        modal.classList.remove("hidden");
+        setTimeout(() => {
+          modalContent.classList.remove("scale-95", "opacity-0");
+          modalContent.classList.add("scale-100", "opacity-100");
+        }, 10);
+      }
+
+      function closeModal() {
+        modalContent.classList.remove("scale-100", "opacity-100");
+        modalContent.classList.add("scale-95", "opacity-0");
+
+        setTimeout(() => {
+          modal.classList.add("hidden");
+        }, 300);
+      }
+
+      // Logika Modal Kotak Saran (Feedback)
+      const fbModal = document.getElementById("feedbackModal");
+      const fbContent = document.getElementById("feedbackContent");
+
+      function openFeedbackModal() {
+        fbModal.classList.remove("hidden");
+        setTimeout(() => {
+          fbContent.classList.remove("scale-95", "opacity-0");
+          fbContent.classList.add("scale-100", "opacity-100");
+        }, 10);
+      }
+
+      function closeFeedbackModal() {
+        fbContent.classList.remove("scale-100", "opacity-100");
+        fbContent.classList.add("scale-95", "opacity-0");
+
+        setTimeout(() => {
+          fbModal.classList.add("hidden");
+        }, 300);
+      }
+    </script>
+  </body>
+</html>

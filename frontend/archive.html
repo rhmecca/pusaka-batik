@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pusaka Batik | Model & Data Archive</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              sage: "#3E4E3A",
+              ivory: "#F9F6F0",
+              terracotta: "#B37D53",
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', "serif"],
+              sans: ['"Inter"', "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-ivory text-sage font-sans antialiased min-h-screen flex flex-col"
+  >
+    <nav
+      class="flex justify-between items-center px-12 py-6 border-b border-sage/10 bg-ivory"
+    >
+      <div
+        class="flex items-center gap-2 cursor-pointer"
+        onclick="window.location.href = 'index.html'"
+      >
+        <div
+          class="w-8 h-8 rounded-full border-4 border-sage flex items-center justify-center"
+        >
+          <div class="w-3 h-3 bg-terracotta rotate-45"></div>
+        </div>
+        <span class="font-serif font-bold text-2xl tracking-wide"
+          >Pusaka Batik</span
+        >
+      </div>
+      <div class="hidden md:flex gap-8 text-sm font-medium">
+        <a href="index.html" class="hover:text-terracotta transition"
+          >Discover</a
+        >
+        <a href="dashboard.html" class="hover:text-terracotta transition"
+          >Identification</a
+        >
+        <a href="index.html#gallery" class="hover:text-terracotta transition"
+          >Gallery</a
+        >
+        <a href="archive.html" class="hover:text-terracotta transition"
+          >Archives</a
+        >
+      </div>
+      <button
+        onclick="openFeedbackModal()"
+        class="bg-sage text-ivory px-6 py-2 rounded-full text-sm font-medium hover:bg-sage/90 transition shadow-md"
+      >
+        Feedback
+      </button>
+    </nav>
+
+    <header class="py-16 px-12 text-center max-w-4xl mx-auto">
+      <p
+        class="text-xs font-bold tracking-widest text-terracotta uppercase mb-3"
+      >
+        Technical Documentation
+      </p>
+      <h1 class="font-serif text-4xl md:text-5xl font-bold mb-6">
+        Model & Data Archive
+      </h1>
+      <p class="text-sage/80 leading-relaxed">
+        Transparency in digital preservation. This page documents the artificial
+        intelligence technical specifications, model architecture, and the
+        dataset utilized to train the Pusaka Batik identification system.
+      </p>
+    </header>
+
+    <main
+      class="flex-grow px-12 pb-24 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12"
+    >
+      <section class="space-y-8">
+        <h2 class="font-serif text-2xl font-bold border-b border-sage/20 pb-4">
+          Architecture & Performance
+        </h2>
+
+        <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-sage/5">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="font-bold text-lg">
+              EfficientNet-B3 (Deep Fine-Tuning)
+            </h3>
+            <span
+              class="bg-sage/10 text-sage px-3 py-1 rounded-full text-xs font-bold uppercase"
+              >Production</span
+            >
+          </div>
+
+          <p class="text-sm text-sage/70 mb-8 leading-relaxed">
+            This system utilizes a Convolutional Neural Network (CNN)
+            architecture based on EfficientNet-B3, enhanced through Deep
+            Transfer Learning. The model is specifically optimized to recognize
+            micro-textures and complex geometric patterns inherent in
+            traditional wax-resist dyeing techniques.
+          </p>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div
+              class="bg-ivory p-4 rounded-2xl border border-sage/10 text-center"
+            >
+              <p
+                class="text-xs text-terracotta font-bold uppercase tracking-wider mb-1"
+              >
+                Test Accuracy
+              </p>
+              <p class="font-serif text-3xl font-bold text-sage">82.33%</p>
+              <p class="text-[10px] text-sage/60 mt-1">
+                247 of 300 correct predictions
+              </p>
+            </div>
+            <div
+              class="bg-ivory p-4 rounded-2xl border border-sage/10 text-center"
+            >
+              <p
+                class="text-xs text-terracotta font-bold uppercase tracking-wider mb-1"
+              >
+                Convergence
+              </p>
+              <p class="font-serif text-3xl font-bold text-sage">149 Epochs</p>
+              <p class="text-[10px] text-sage/60 mt-1">
+                Early Stopping Implemented
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-8 space-y-3 text-sm">
+            <div class="flex justify-between border-b border-sage/5 pb-2">
+              <span class="text-sage/70">Optimizer</span>
+              <span class="font-medium">Adam (Learning Rate: 1e-5)</span>
+            </div>
+            <div class="flex justify-between border-b border-sage/5 pb-2">
+              <span class="text-sage/70">Loss Function</span>
+              <span class="font-medium">Categorical Crossentropy</span>
+            </div>
+            <div class="flex justify-between pb-2">
+              <span class="text-sage/70">Input Resolution</span>
+              <span class="font-medium">300 x 300 pixels (RGB)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="space-y-8">
+        <h2 class="font-serif text-2xl font-bold border-b border-sage/20 pb-4">
+          Dataset Specification
+        </h2>
+
+        <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-sage/5">
+          <div
+            class="mb-6 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 border-b border-sage/10 pb-4"
+          >
+            <div>
+              <h3 class="font-bold text-lg text-terracotta">
+                DATASETv7 - Batik Nusantara
+              </h3>
+              <p class="text-xs text-sage/60 mt-1">
+                Source: Kaggle Repository | Augmentation: Active
+              </p>
+            </div>
+
+            <a
+              href="https://www.kaggle.com/datasets/alfanme/indonesian-batik-motifs-corak-app"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 border-2 border-sage/20 text-sage hover:bg-sage hover:text-ivory px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wide transition duration-300 w-max shrink-0"
+            >
+              View Dataset
+              <svg
+                class="w-3 h-3"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                ></path>
+              </svg>
+            </a>
+          </div>
+
+          <p class="text-sm text-sage/70 mb-6 leading-relaxed">
+            The model was trained on a comprehensive corpus of high-resolution
+            image data encompassing 15 classes of traditional motifs. The data
+            preprocessing pipeline includes pixel normalization (1./255) and
+            advanced data augmentation techniques (rotation, shear, width/height
+            shifts, and zoom) to significantly enhance the model's robustness
+            and generalization capability.
+          </p>
+
+          <div class="bg-ivory rounded-2xl p-6 border border-sage/10">
+            <h4 class="font-bold text-sm mb-4">
+              Classification Scope (15 Motifs)
+            </h4>
+            <div
+              class="grid grid-cols-2 gap-x-4 gap-y-2 text-xs font-medium text-sage/80"
+            >
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Bali
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Lasem
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Betawi
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Megamendung
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Cendrawasih
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Pala
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Dayak
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Parang
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Geblek Renteng
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Poleng
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Ikat Celup
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Sekar Jagad
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Insang
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Tambal
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-terracotta"></div>
+                Batik Kawung
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="border-t border-sage/10 py-8 px-12 text-center text-xs text-sage/60 mt-auto"
+    >
+      &copy; 2026 Pusaka Batik. Preserving the art of wax-resist dyeing.
+    </footer>
+    <div
+      id="feedbackModal"
+      class="fixed inset-0 z-[60] hidden flex items-center justify-center"
+    >
+      <div
+        class="absolute inset-0 bg-sage/40 backdrop-blur-sm transition-opacity"
+        onclick="closeFeedbackModal()"
+      ></div>
+
+      <div
+        class="relative bg-ivory w-11/12 max-w-md rounded-[2rem] shadow-2xl p-8 text-center transform transition-all scale-95 opacity-0 duration-300"
+        id="feedbackContent"
+      >
+        <button
+          onclick="closeFeedbackModal()"
+          class="absolute top-4 right-4 text-sage/50 hover:text-terracotta transition"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+
+        <div
+          class="w-16 h-16 bg-sage/10 text-terracotta rounded-full flex items-center justify-center mx-auto mb-4"
+        >
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+            ></path>
+          </svg>
+        </div>
+
+        <h3 class="font-serif text-2xl font-bold text-sage mb-2">
+          We Value Your Feedback
+        </h3>
+        <p class="text-sm text-sage/70 leading-relaxed mb-8">
+          Help us improve the Pusaka Batik system! Your insights are highly
+          valuable for refining our AI and user interface.
+        </p>
+
+        <a
+          href="https://forms.gle/tRKeZCyf6gWrgAk2A"
+          target="_blank"
+          rel="noopener noreferrer"
+          onclick="closeFeedbackModal()"
+          class="inline-block bg-terracotta text-white w-full py-3 rounded-full font-bold tracking-wide hover:-translate-y-1 hover:shadow-lg transition duration-300"
+        >
+          Open Google Form
+        </a>
+      </div>
+    </div>
+    <script>
+      // Logika Modal Feedback
+      const fbModal = document.getElementById("feedbackModal");
+      const fbContent = document.getElementById("feedbackContent");
+      function openFeedbackModal() {
+        fbModal.classList.remove("hidden");
+        setTimeout(() => {
+          fbContent.classList.remove("scale-95", "opacity-0");
+          fbContent.classList.add("scale-100", "opacity-100");
+        }, 10);
+      }
+      function closeFeedbackModal() {
+        fbContent.classList.remove("scale-100", "opacity-100");
+        fbContent.classList.add("scale-95", "opacity-0");
+        setTimeout(() => {
+          fbModal.classList.add("hidden");
+        }, 300);
+      }
+    </script>
+  </body>
+</html>
