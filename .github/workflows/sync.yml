@@ -11,10 +11,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Push to HF with LFS
+      - name: Push Backend to HF with LFS
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
+          cd backend
           rm -rf .git
           git init
           git checkout -b main
@@ -24,6 +25,6 @@ jobs:
           git lfs track "*.tflite"
           git add .gitattributes
           git add .
-          git commit -m "Deploy to Hugging Face"
+          git commit -m "Deploy Backend AI to Hugging Face"
           git remote add origin https://rhmecca:$HF_TOKEN@huggingface.co/spaces/rhmecca/pusaka-batik-api
           git push --force origin main
