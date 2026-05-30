@@ -10,10 +10,20 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Push to HF
+      - name: Push to HF with LFS
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force https://rhmecca:$HF_TOKEN@huggingface.co/spaces/rhmecca/pusaka-batik-api main
+        run: |
+          rm -rf .git
+          git init
+          git checkout -b main
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git lfs install
+          git lfs track "*.tflite"
+          git add .gitattributes
+          git add .
+          git commit -m "Deploy to Hugging Face"
+          git remote add origin https://rhmecca:$HF_TOKEN@huggingface.co/spaces/rhmecca/pusaka-batik-api
+          git push --force origin main
