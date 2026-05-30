@@ -1,6 +1,6 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
+# from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse
 import numpy as np
 from PIL import Image
@@ -63,5 +63,8 @@ async def predict_batik(file: UploadFile = File(...)):
 
 # Menyajikan file Frontend secara statis
 # Endpoint ini diletakkan di bawah agar tidak menabrak rute /predict
-frontend_path = os.path.join(os.path.dirname(__file__), '..', 'frontend')
-app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
+# frontend_path = os.path.join(os.path.dirname(__file__), '..', 'frontend')
+# app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
+@app.get("/")
+async def root():
+    return {"message": "Pusaka Batik AI Backend is Running Successfully!"}
