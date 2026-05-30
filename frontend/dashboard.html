@@ -360,7 +360,7 @@
           valuable for refining our AI and user interface.
         </p>
         <a
-          href="LINK_GOOGLE_FORM_KAMU_DISINI"
+          href="https://forms.gle/XVBXWzNr4c72GGgr7"
           target="_blank"
           rel="noopener noreferrer"
           onclick="closeFeedbackModal()"
@@ -508,10 +508,13 @@
         formData.append("file", imageFile);
 
         try {
-          const response = await fetch("/predict", {
-            method: "POST",
-            body: formData,
-          });
+          const response = await fetch(
+            "https://rhmecca-pusaka-batik-api.hf.space/predict",
+            {
+              method: "POST",
+              body: formData,
+            },
+          );
           const data = await response.json();
 
           loading.classList.add("hidden");
